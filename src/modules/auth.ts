@@ -7,3 +7,12 @@ export const createJWT = (user) =>{
     process.env.JWT_SECRET)
     return token
 }
+export const protect =(req,res)=>{
+    const bearer = req.headers.authorization
+
+    if(!bearer){
+        res.status(401)
+        res.json({msg:"unauthorized access!"})
+        return
+    }
+}
